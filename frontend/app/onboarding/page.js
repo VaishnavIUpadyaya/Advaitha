@@ -1,21 +1,26 @@
 "use client";
 import { db } from "@/lib/firebase/firestore";
+import { auth } from "@/lib/firebase/auth";
 import { useState } from "react";
-
+import { doc, setDoc } from "firebase/firestore";
 export default function Onboarding() {
   const [form, setForm] = useState({
     skinType: "",
     diet: "",
     sensitivity: "",
   });
-
+const uid=auth.currentUser.uid;
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(form);
+    await setDoc(doc(db,"users",uid),{
+        ...form,
+        createdAt:new Date(),
+    });
+    alert("Onboarding saved to firestore");
   };
 
   return (
