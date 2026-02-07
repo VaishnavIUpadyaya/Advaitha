@@ -1,8 +1,8 @@
 "use client";
-
+import { useRouter } from "next/navigation";
 import { db } from "../../lib/firebase/firestore";
 import { auth } from "../../lib/firebase/auth";
-import { useState } from "react";
+import { use, useState } from "react";
 import { doc, setDoc } from "firebase/firestore";
 
 export default function Onboarding() {
@@ -12,7 +12,7 @@ export default function Onboarding() {
     diet: "",
     sensitivity: "",
   });
-
+const router = useRouter();
   const handleSubmit = async () => {
     const uid = auth?.currentUser?.uid || "DEV_USER_001";
 
@@ -23,6 +23,8 @@ export default function Onboarding() {
       });
 
       alert("Onboarding saved");
+      router.push("/settings");
+
     } catch (err) {
       console.error(err);
       alert("Failed to save onboarding");
