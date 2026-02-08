@@ -1,40 +1,58 @@
 import { NextResponse } from "next/server";
-import { db } from "@/lib/firebase/firestore";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 
-export async function GET(req) {
-  const { searchParams } = new URL(req.url);
-  const uid = searchParams.get("uid");
-
-  if (!uid) {
-    return NextResponse.json({ error: "Missing uid" }, { status: 400 });
-  }
-
-  try {
-    const ref = doc(db, "routines", uid);
-    const snap = await getDoc(ref);
-
-    if (!snap.exists()) {
-      return NextResponse.json(null);
-    }
-
-    return NextResponse.json(snap.data());
-  } catch (err) {
-    return NextResponse.json({ error: err.message }, { status: 500 });
-  }
-}
+import { db } from "../../../lib/firebase/firestore";
+import { model } from "../../../lib/gemini/client";
 
 export async function POST(req) {
   try {
-    const body = await req.json();
-    const { uid, routine } = body;
+    const { uid } = await req.json();
+    if (!uid) return NextResponse.json({ error: "UID required" }, { status: 400 });
 
-    const ref = doc(db, "routines", uid);
+    if (!db) return NextResponse.json({ error: "Firestore db not initialized" }, { status: 500 });
 
-    await setDoc(ref, routine);
+    const userSnap = await getDoc(doc(db, "users", uid));
+    const analysisSnap = await getDoc(doc(db, "analysisResults", uid));
 
-    return NextResponse.json({ success: true });
+    if (!userSnap.exists() || !analysisSnap.exists()) {
+      return NextResponse.json({ error: "Missing user data" }, { status: 404 });
+    }
+
+    const user = userSnap.data();
+    const analysis = analysisSnap.data().analysis;
+
+    const prompt = `
+User skin profile:
+Skin type: ${user.skinType}
+Diet: ${user.diet}
+Sensitivity: ${user.sensitivity}
+
+Previous analysis:
+${analysis}
+
+Generate a DAILY skincare routine:
+- Morning steps
+- Night steps
+- Weekly care
+- Lifestyle tips
+
+Rules:
+- Simple steps
+- No brands
+- No medical advice
+`;
+
+    const result = await model.generateContent(prompt);
+    const routine = result.response.text();
+
+    await setDoc(doc(db, "routines", uid), {
+      routine,
+      createdAt: new Date(),
+    });
+
+    return NextResponse.json({ routine });
   } catch (err) {
-    return NextResponse.json({ error: err.message }, { status: 500 });
+    console.error("/api/routine error:", err);
+    return NextResponse.json({ error: err.message || String(err) }, { status: 500 });
   }
 }
