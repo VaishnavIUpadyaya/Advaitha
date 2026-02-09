@@ -24,159 +24,41 @@ export default function LoginPage() {
   };
 
   return (
-    <>
-      <style jsx>{`
-        @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Inter:wght@300;400;500&display=swap");
+    <div className="relative min-h-screen bg-[#976f4c]">
 
-        /* PAGE */
-        .page {
-          min-height: 100vh;
-          background: #9c734f;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          padding: 2rem;
-        }
+      {/* LEAF BACKGROUND TEXTURE */}
+      <div
+        className="absolute inset-0 opacity-10"
+        style={{
+          backgroundImage: "url('/leaves.jpg')",
+          backgroundRepeat: "repeat",
+          backgroundSize: "280px",
+        }}
+      />
 
-        /* CARD */
-        .card {
-          position: relative;
-          width: 920px;
-          background: #f4efdf;
-          border-radius: 18px;
-          padding: 3rem 3rem 3rem 7rem;
-          box-shadow: 0 30px 60px rgba(0, 0, 0, 0.35);
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 3rem;
-        }
+      {/* CENTER CONTENT */}
+      <div className="relative z-10 min-h-screen flex items-center justify-center p-8">
 
-        /* IMAGE BLOCK */
-        .image-block {
-          position: absolute;
-          left: -70px;
-          top: 50%;
-          transform: translateY(-50%);
-          width: 300px;
-          height: 420px;
-          border-radius: 24px 24px 60px 24px;
-          overflow: hidden;
-          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
-        }
+        <div className="relative w-[920px] bg-[#f4efdf] rounded-[18px] pl-[7rem] pr-12 pt-16 pb-12 shadow-[0_30px_60px_rgba(0,0,0,0.35)] grid grid-cols-2 gap-12">
 
-        /* CONTENT */
-        .content {
-          grid-column: 2;
-        }
-
-        h2 {
-          font-family: "Playfair Display", serif;
-          font-size: 2rem;
-          font-weight: 500;
-          color: #2b1a12;
-          margin-bottom: 0.6rem;
-        }
-
-        .subtitle {
-          font-family: "Inter", sans-serif;
-          font-size: 0.9rem;
-          color: #5a4638;
-          margin-bottom: 2rem;
-        }
-
-        input {
-          width: 100%;
-          padding: 0.9rem 1rem;
-          margin-bottom: 1.3rem;
-          border-radius: 10px;
-          border: none;
-          background: #ebe5d6;
-          font-family: "Inter", sans-serif;
-          font-size: 0.95rem;
-        }
-
-        input:focus {
-          outline: none;
-          background: #e2dccb;
-        }
-
-        .error {
-          font-size: 0.85rem;
-          color: #b00020;
-          margin-bottom: 1rem;
-        }
-
-        .primary {
-          width: 100%;
-          padding: 0.95rem;
-          background: #2b1a12;
-          color: white;
-          border-radius: 999px;
-          border: none;
-          font-family: "Inter", sans-serif;
-          cursor: pointer;
-          transition: background 0.2s ease;
-        }
-
-        .primary:hover {
-          background: #1f120c;
-        }
-
-        .secondary {
-          margin-top: 1.4rem;
-          background: none;
-          border: none;
-          font-family: "Inter", sans-serif;
-          font-size: 0.85rem;
-          color: #5a4638;
-          cursor: pointer;
-        }
-
-        .secondary:hover {
-          text-decoration: underline;
-        }
-
-        /* RESPONSIVE */
-        @media (max-width: 900px) {
-          .card {
-            grid-template-columns: 1fr;
-            padding: 2.5rem;
-          }
-
-          .image-block {
-            position: relative;
-            left: 0;
-            top: 0;
-            transform: none;
-            width: 100%;
-            height: 760px;
-            margin-bottom: 2rem;
-            border-radius: 18px;
-          }
-
-          .content {
-            grid-column: auto;
-          }
-        }
-      `}</style>
-
-      <div className="page">
-        <div className="card">
           {/* IMAGE */}
-          <div className="image-block">
+          <div className="absolute left-[-70px] top-1/2 -translate-y-1/2 w-[300px] h-[420px] rounded-[24px_24px_60px_24px] overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.35)]">
             <Image
               src="/login2.jpg"
               alt="Skincare"
               fill
               priority
-              style={{ objectFit: "cover" }}
+              className="object-cover"
             />
           </div>
 
           {/* CONTENT */}
-          <div className="content">
-            <h2>Welcome Back</h2>
-            <div className="subtitle">
+          <div className="col-start-2">
+            <h2 className="font-[marcellus] text-[2rem] font-medium text-[#2b1a12] mb-2">
+              Welcome Back
+            </h2>
+
+            <div className="text-[0.9rem] text-[#5a4638] mb-8">
               Continue your personalized skincare journey
             </div>
 
@@ -187,6 +69,7 @@ export default function LoginPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
+                className="w-full px-4 py-[0.9rem] mb-5 rounded-[10px] bg-[#ebe5d6] text-[0.95rem] focus:outline-none focus:bg-[#e2dccb]"
               />
 
               <input
@@ -195,22 +78,34 @@ export default function LoginPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
+                className="w-full px-4 py-[0.9rem] mb-5 rounded-[10px] bg-[#ebe5d6] text-[0.95rem] focus:outline-none focus:bg-[#e2dccb]"
               />
 
-              {error && <div className="error">{error}</div>}
+              {error && (
+                <div className="text-[0.85rem] text-[#b00020] mb-4">
+                  {error}
+                </div>
+              )}
 
-              <button className="primary">Login</button>
+              <button
+                type="submit"
+                className="font-[marcellus] w-full py-[0.95rem] bg-[#2b1a12] text-white rounded-full text-[0.95rem] hover:bg-[#1f120c] transition duration-200"
+              >
+                Login
+              </button>
             </form>
 
             <button
-              className="secondary"
               onClick={() => router.push("/signup")}
+              className="mt-6 text-[0.85rem] text-[#5a4638] hover:underline"
             >
               Don’t have an account? Sign up
             </button>
+
           </div>
         </div>
+
       </div>
-    </>
+    </div>
   );
 }

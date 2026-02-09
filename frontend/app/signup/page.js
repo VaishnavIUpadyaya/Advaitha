@@ -37,144 +37,42 @@ export default function SignupPage() {
   };
 
   return (
-    <>
-      <style jsx>{`
-        @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Inter:wght@300;400;500&display=swap");
+    <div className="relative min-h-screen bg-[#976f4c]">
 
-        /* PAGE */
-        .page {
-  min-height: 100vh;
-  background: #9b7351; /* caramel brown */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+      {/* LEAF TEXTURE BACKGROUND */}
+      <div
+        className="absolute inset-0 opacity-10"
+        style={{
+          backgroundImage: "url('/leaves.jpg')",
+          backgroundRepeat: "repeat",
+          backgroundSize: "280px",
+        }}
+      />
 
+      {/* CENTER CONTENT */}
+      <div className="relative z-10 min-h-screen flex items-center justify-center">
 
-        /* CARD */
-        .card {
-          width: 460px;
-          background: #f8f1ec;
-          border-radius: 28px;
-          box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
-          overflow: hidden;
-        }
-
-        /* IMAGE */
-        .signup-image {
-          display: flex;
-          justify-content: center;
-          padding: 2rem 2rem 0;
-        }
-
-        .signup-image img {
-          border-radius: 18px;
-          object-fit: cover;
-        }
-
-        /* CONTENT */
-        .content {
-          padding: 2.4rem;
-          text-align: center;
-        }
-
-        h2 {
-          font-family: "Playfair Display", serif;
-          font-size: 2rem;
-          font-weight: 500;
-          color: #3a2416;
-          margin-bottom: 0.4rem;
-        }
-
-        .subtitle {
-          font-family: "Inter", sans-serif;
-          font-size: 0.9rem;
-          color: #6f3f2b;
-          margin-bottom: 2rem;
-        }
-
-        /* INPUTS */
-        input {
-          width: 100%;
-          padding: 0.9rem 1rem;
-          margin-bottom: 1.3rem;
-          border-radius: 12px;
-          border: none;
-          background: #f0e4dc;
-          font-family: "Inter", sans-serif;
-          font-size: 0.95rem;
-          color: #3a2416;
-        }
-
-        input::placeholder {
-          color: #7a5a48;
-        }
-
-        input:focus {
-          outline: none;
-          background: #ead8cd;
-        }
-
-        .error {
-          font-size: 0.85rem;
-          color: #9c1c1c;
-          margin-bottom: 1rem;
-        }
-
-        /* BUTTON */
-        .primary {
-          width: 100%;
-          padding: 0.95rem;
-          background: linear-gradient(135deg, #6f3f2b, #4a2a1c);
-          color: white;
-          border-radius: 999px;
-          border: none;
-          font-family: "Inter", sans-serif;
-          font-size: 0.95rem;
-          cursor: pointer;
-          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-          transition: all 0.25s ease;
-        }
-
-        .primary:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
-        }
-
-        .secondary {
-          margin-top: 1.6rem;
-          background: none;
-          border: none;
-          font-family: "Inter", sans-serif;
-          font-size: 0.85rem;
-          color: #6f3f2b;
-          cursor: pointer;
-          width: 100%;
-        }
-
-        .secondary:hover {
-          text-decoration: underline;
-        }
-      `}</style>
-
-      <div className="page">
-        <div className="card">
+        <div className="w-[460px] bg-[#f8f1ec] rounded-[28px] shadow-[0_25px_50px_rgba(0,0,0,0.25)] overflow-hidden">
 
           {/* IMAGE SECTION */}
-          <div className="signup-image">
+          <div className="flex justify-center pt-8 px-8">
             <Image
               src="/signup.jpg"
               alt="Skincare"
               width={160}
               height={200}
               priority
+              className="rounded-[18px] object-cover"
             />
           </div>
 
           {/* FORM SECTION */}
-          <div className="content">
-            <h2>Create Account</h2>
-            <div className="subtitle">
+          <div className="px-10 py-10 text-center">
+            <h2 className="font-[marcellus] text-[2rem] font-medium text-[#3a2416] mb-2">
+              Create Account
+            </h2>
+
+            <div className="text-[0.9rem] text-[#6f3f2b] mb-8">
               Start your personalized skincare journey
             </div>
 
@@ -185,6 +83,7 @@ export default function SignupPage() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 required
+                className="w-full px-4 py-[0.9rem] mb-5 rounded-[12px] bg-[#f0e4dc] text-[#3a2416] text-[0.95rem] placeholder-[#7a5a48] focus:outline-none focus:bg-[#ead8cd]"
               />
 
               <input
@@ -193,6 +92,7 @@ export default function SignupPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
+                className="w-full px-4 py-[0.9rem] mb-5 rounded-[12px] bg-[#f0e4dc] text-[#3a2416] text-[0.95rem] placeholder-[#7a5a48] focus:outline-none focus:bg-[#ead8cd]"
               />
 
               <input
@@ -201,22 +101,34 @@ export default function SignupPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
+                className="w-full px-4 py-[0.9rem] mb-5 rounded-[12px] bg-[#f0e4dc] text-[#3a2416] text-[0.95rem] placeholder-[#7a5a48] focus:outline-none focus:bg-[#ead8cd]"
               />
 
-              {error && <div className="error">{error}</div>}
+              {error && (
+                <div className="text-[0.85rem] text-[#9c1c1c] mb-4">
+                  {error}
+                </div>
+              )}
 
-              <button className="primary">Sign up</button>
+              <button
+                type="submit"
+                className="font-[marcellus] w-full py-[0.95rem] bg-gradient-to-br from-[#6f3f2b] to-[#4a2a1c] text-white rounded-full text-[0.95rem] shadow-[0_8px_20px_rgba(0,0,0,0.25)] hover:-translate-y-[2px] hover:shadow-[0_12px_28px_rgba(0,0,0,0.35)] transition-all duration-300"
+              >
+                Sign up
+              </button>
             </form>
 
             <button
-              className="secondary"
               onClick={() => router.push("/login")}
+              className="mt-6 text-[0.85rem] text-[#6f3f2b] hover:underline w-full"
             >
               Already have an account? Login
             </button>
+
           </div>
         </div>
+
       </div>
-    </>
+    </div>
   );
 }
