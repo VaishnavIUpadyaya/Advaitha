@@ -46,14 +46,18 @@ export default function Onboarding() {
             />
           </div>
 
-          <div className="space-y-6 w-full md:w-1/2 flex flex-col justify-center">
+          <div className="space-y-6 w-full md:w-1/2 flex flex-col justify-center text-black font-[marcellus]">
             {step !== 4 && (
-              <div className="text-2xl font-bold mx-1">Tell us about your skin</div>
+              <div className="text-3xl font-bold mx-1">
+                Tell us about your skin...
+              </div>
             )}
 
             {step === 1 && (
               <div className="w-full max-w-md mx-auto space-y-4 px-4">
-                <div className="font-bold text-center md:text-left">What is your skin type?</div>
+                <div className="font-bold text-2xl text-center md:text-left">
+                  What is your skin type?
+                </div>
 
                 <div className="space-y-3">
                   {[
@@ -80,22 +84,28 @@ export default function Onboarding() {
 
             {step === 2 && (
               <div className="w-full max-w-md mx-auto space-y-4 px-4">
-                <p className="font-semibold text-center md:text-left">What best describes your diet?</p>
+                <p className="font-semibold text-center md:text-left">
+                  What best describes your diet?
+                </p>
 
                 <div className="space-y-3">
-                  {["Balanced", "High Carb", "High Protein", "Vegetarian", "Junk / Processed"].map(
-                    (opt) => (
-                      <OptionCard
-                        key={opt}
-                        text={opt}
-                        selected={form.diet === opt}
-                        onClick={() => {
-                          setForm({ ...form, diet: opt });
-                          setStep(3);
-                        }}
-                      />
-                    )
-                  )}
+                  {[
+                    "Balanced",
+                    "High Carb",
+                    "High Protein",
+                    "Vegetarian",
+                    "Junk / Processed",
+                  ].map((opt) => (
+                    <OptionCard
+                      key={opt}
+                      text={opt}
+                      selected={form.diet === opt}
+                      onClick={() => {
+                        setForm({ ...form, diet: opt });
+                        setStep(3);
+                      }}
+                    />
+                  ))}
                 </div>
               </div>
             )}
@@ -123,7 +133,11 @@ export default function Onboarding() {
             {step === 4 && (
               <div className="flex flex-col items-center gap-4">
                 <div>
-                  <img src="/loading.jpg" alt="loading" className="h-20 w-50 object-cover rounded-lg" />
+                  <img
+                    src="/loading.jpg"
+                    alt="loading"
+                    className="h-20 w-50 object-cover rounded-lg"
+                  />
                 </div>
 
                 <button

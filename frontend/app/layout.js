@@ -1,4 +1,5 @@
 import { Geist, Geist_Mono } from "next/font/google";
+import { Marcellus } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -9,6 +10,12 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+const marcellus = Marcellus({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-marcellus",
 });
 
 export const metadata = {
