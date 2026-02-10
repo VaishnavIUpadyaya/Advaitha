@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import { updateProfile } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import { auth, db } from "../../lib/firebase/config";
 import { useRouter } from "next/navigation";
@@ -18,18 +19,16 @@ export default function SignupPage() {
     e.preventDefault();
     setError("");
     try {
-      const cred = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
+      const cred = await createUserWithEmailAndPassword(auth, email, password);
 
       await setDoc(doc(db, "users", cred.user.uid), {
         name,
         email,
         createdAt: new Date(),
       });
-
+      await updateProfile(cred.user, {
+        displayName: name,
+      });
       router.push("/onboarding");
     } catch (err) {
       setError(err.code.replace("auth/", "").replaceAll("-", " "));
@@ -38,8 +37,6 @@ export default function SignupPage() {
 
   return (
     <div className="relative min-h-screen bg-[#976f4c]">
-
-      {/* LEAF TEXTURE BACKGROUND */}
       <div
         className="absolute inset-0 opacity-10"
         style={{
@@ -49,12 +46,8 @@ export default function SignupPage() {
         }}
       />
 
-      {/* CENTER CONTENT */}
       <div className="relative z-10 min-h-screen flex items-center justify-center">
-
         <div className="w-[460px] bg-[#f8f1ec] rounded-[28px] shadow-[0_25px_50px_rgba(0,0,0,0.25)] overflow-hidden">
-
-          {/* IMAGE SECTION */}
           <div className="flex justify-center pt-8 px-8">
             <Image
               src="/signup.jpg"
@@ -66,7 +59,6 @@ export default function SignupPage() {
             />
           </div>
 
-          {/* FORM SECTION */}
           <div className="px-10 py-10 text-center">
             <h2 className="font-[marcellus] text-[2rem] font-medium text-[#3a2416] mb-2">
               Create Account
@@ -124,10 +116,8 @@ export default function SignupPage() {
             >
               Already have an account? Login
             </button>
-
           </div>
         </div>
-
       </div>
     </div>
   );

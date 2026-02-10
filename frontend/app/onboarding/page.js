@@ -36,7 +36,7 @@ export default function Onboarding() {
 
   return (
     <div className="bg-[#976f4c] min-h-screen flex items-center justify-center">
-      <div className="p-10 max-w-4xl mx-auto bg-[#eceadd] rounded-xl shadow-xl">
+      <div className="p-10 max-w-4xl mx-auto bg-[#eceadd] rounded-xl shadow-xl scale-[0.86] origin-center">
         <div className="flex flex-col md:flex-row gap-10 items-stretch">
           <div className="hidden md:block w-1/2">
             <img
