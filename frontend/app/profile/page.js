@@ -5,7 +5,7 @@ import { auth } from "../../lib/firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../lib/firebase/firestore";
 import { motion } from "framer-motion";
-
+import LeafBackground from "../components/LeafBackground";
 export default function ProfilePage() {
   const [userInfo, setUserInfo] = useState(null);
   const [analysis, setAnalysis] = useState("");
@@ -46,17 +46,8 @@ export default function ProfilePage() {
   }, []);
 
   return (
-    <div className="relative min-h-screen bg-[#b46247] text-[#f7efe7] selection:bg-[#b46247]/30">
-      <div
-        className="absolute inset-0 opacity-10 pointer-events-none"
-        style={{
-          backgroundImage: "url('/leaves.jpg')",
-          backgroundRepeat: "repeat",
-          backgroundSize: "280px",
-        }}
-      />
-
-      <div className="relative z-10 flex flex-col min-h-screen">
+    <LeafBackground textColor="text-[#f7efe7]">
+      <div className="flex flex-col min-h-screen">
         <main className="flex-1 flex flex-col items-center justify-center px-4 pt-24 pb-12 relative">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-3xl h-[500px] bg-[#b46247]/5 blur-[120px] pointer-events-none rounded-full" />
 
@@ -174,6 +165,6 @@ export default function ProfilePage() {
           </motion.div>
         </main>
       </div>
-    </div>
+    </LeafBackground>
   );
 }

@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 import { db } from "../../lib/firebase/firestore";
 import { auth } from "../../lib/firebase/auth";
 import { doc, getDoc, setDoc } from "firebase/firestore";
-
+import { Leaf } from "lucide-react";
+import LeafBackground from "../components/LeafBackground";
 export default function Settings() {
   const [form, setForm] = useState({
     skinType: "",
@@ -28,17 +29,8 @@ export default function Settings() {
   };
 
   return (
-    <div className="relative min-h-screen bg-[#b46247] text-black">
-      <div
-        className="absolute inset-0 opacity-10"
-        style={{
-          backgroundImage: "url('/leaves.jpg')",
-          backgroundRepeat: "repeat",
-          backgroundSize: "280px",
-        }}
-      />
-
-      <div className="relative z-10 min-h-screen flex justify-center items-center">
+    <LeafBackground>
+      <div className="min-h-screen flex justify-center items-center">
         <div className="bg-[#eceadd] p-10 rounded-xl shadow-xl w-full max-w-3xl">
           <h1 className="text-2xl font-bold mb-6 font-[marcellus]">
             Update Preferences
@@ -88,7 +80,7 @@ export default function Settings() {
           </div>
         </div>
       </div>
-    </div>
+    </LeafBackground>
   );
 }
 

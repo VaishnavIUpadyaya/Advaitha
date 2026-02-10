@@ -4,6 +4,7 @@ import { useState } from "react";
 import { doc, setDoc } from "firebase/firestore";
 import { db } from "../../lib/firebase/firestore";
 import { auth } from "../../lib/firebase/auth";
+import LeafBackground from "../components/LeafBackground";
 
 export default function Onboarding() {
   const [step, setStep] = useState(1);
@@ -34,15 +35,7 @@ export default function Onboarding() {
   };
 
   return (
-    <div className="relative min-h-screen bg-[#b46247] text-[#f7efe7] selection:bg-[#b46247]/30">
-      <div
-        className="absolute inset-0 opacity-10 pointer-events-none"
-        style={{
-          backgroundImage: "url('/leaves.jpg')",
-          backgroundRepeat: "repeat",
-          backgroundSize: "280px",
-        }}
-      />{" "}
+    <LeafBackground textColor="text-[#f7efe7]">
       <div className="p-10 max-w-4xl mx-auto bg-[#eceadd] rounded-xl shadow-xl scale-[0.86] origin-center">
         <div className="flex flex-col md:flex-row gap-10 items-stretch">
           <div className="hidden md:block w-1/2">
@@ -158,7 +151,7 @@ export default function Onboarding() {
           </div>
         </div>
       </div>
-    </div>
+    </LeafBackground>
   );
 }
 

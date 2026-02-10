@@ -7,6 +7,7 @@ import { doc, setDoc } from "firebase/firestore";
 import { auth, db } from "../../lib/firebase/config";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import LeafBackground from "../components/LeafBackground";
 
 export default function SignupPage() {
   const router = useRouter();
@@ -36,16 +37,7 @@ export default function SignupPage() {
   };
 
   return (
-    <div className="relative min-h-screen bg-[#b46247]">
-      <div
-        className="absolute inset-0 opacity-10"
-        style={{
-          backgroundImage: "url('/leaves.jpg')",
-          backgroundRepeat: "repeat",
-          backgroundSize: "280px",
-        }}
-      />
-
+    <LeafBackground>
       <div className="relative z-10 min-h-screen flex items-center justify-center">
         <div className="w-[460px] bg-[#f8f1ec] rounded-[28px] shadow-[0_25px_50px_rgba(0,0,0,0.25)] overflow-hidden">
           <div className="flex justify-center pt-8 px-8">
@@ -119,6 +111,6 @@ export default function SignupPage() {
           </div>
         </div>
       </div>
-    </div>
+    </LeafBackground>
   );
 }
