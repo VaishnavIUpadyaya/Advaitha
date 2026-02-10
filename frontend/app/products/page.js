@@ -210,7 +210,9 @@ export default function ProductsPage() {
                     <span className="text-gray-400 font-bold uppercase tracking-[0.2em] text-[10px]">Subtotal</span>
                     <span className="text-3xl font-bold text-gray-900 tracking-tighter">₹{total}</span>
                   </div>
-                  <button className="w-full bg-[#b76247] text-white py-6 rounded-2xl font-bold text-sm uppercase tracking-widest shadow-xl shadow-[#b76247]/20 hover:bg-[#a3563d] transition-all active:scale-[0.98]">
+                  <button 
+                  onClick={() => alert("Checkout complete!")}
+                  className="w-full bg-[#b76247] text-white py-6 rounded-2xl font-bold text-sm uppercase tracking-widest shadow-xl shadow-[#b76247]/20 hover:bg-[#a3563d] transition-all active:scale-[0.98]">
                     Secure Checkout
                   </button>
                   <p className="text-center text-[10px] text-gray-400 mt-6 uppercase tracking-widest italic">
