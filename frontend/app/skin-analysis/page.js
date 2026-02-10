@@ -1,6 +1,5 @@
 "use client";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
 import { auth } from "../../lib/firebase/auth";
 import jsPDF from "jspdf";
 import { Download } from "lucide-react";
@@ -9,7 +8,6 @@ import LeafBackground from "../components/LeafBackground";
 export default function SkinAnalysis() {
   const [result, setResult] = useState("");
   const [loading, setLoading] = useState(true);
-  const router = useRouter();
   useEffect(() => {
     const runAnalysis = async () => {
       const uid = auth?.currentUser?.uid || "DEV_USER_001";
@@ -70,9 +68,6 @@ export default function SkinAnalysis() {
                     >
                       <Download className="inline-block " size={18} />
                     </button>
-                    <div onClick={() => router.push("/profile")}>
-                      click here
-                    </div>
                   </div>
                 )}
               </>
