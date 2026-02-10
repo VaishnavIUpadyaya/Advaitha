@@ -24,9 +24,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="relative min-h-screen bg-[#976f4c]">
-
-      {/* LEAF BACKGROUND TEXTURE */}
+    <div className="relative min-h-screen bg-[#b46247]">
       <div
         className="absolute inset-0 opacity-10"
         style={{
@@ -36,12 +34,8 @@ export default function LoginPage() {
         }}
       />
 
-      {/* CENTER CONTENT */}
       <div className="relative z-10 min-h-screen flex items-center justify-center p-8">
-
         <div className="relative w-[920px] bg-[#f4efdf] rounded-[18px] pl-[7rem] pr-12 pt-16 pb-12 shadow-[0_30px_60px_rgba(0,0,0,0.35)] grid grid-cols-2 gap-12">
-
-          {/* IMAGE */}
           <div className="absolute left-[-70px] top-1/2 -translate-y-1/2 w-[300px] h-[420px] rounded-[24px_24px_60px_24px] overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.35)]">
             <Image
               src="/login2.jpg"
@@ -52,7 +46,6 @@ export default function LoginPage() {
             />
           </div>
 
-          {/* CONTENT */}
           <div className="col-start-2">
             <h2 className="font-[marcellus] text-[2rem] font-medium text-[#2b1a12] mb-2">
               Welcome Back
@@ -101,10 +94,8 @@ export default function LoginPage() {
             >
               Don’t have an account? Sign up
             </button>
-
           </div>
         </div>
-
       </div>
     </div>
   );
