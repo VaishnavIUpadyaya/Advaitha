@@ -6,7 +6,6 @@ import Image from "next/image";
 export default function ProductsPage() {
   const [cart, setCart] = useState([]);
 
-  // 🔥 25 PRODUCTS
   const products = [
     { id: 1,  price: 899, image: "/p1b.jpg" },
     { id: 2, price: 749, image: "/p2b.jpg" },
@@ -35,32 +34,31 @@ export default function ProductsPage() {
     { id: 25,  price: 950, image: "/p25.jpg" },
   ];
 
-  // 🟢 ADD TO CART
   const addToCart = (product) => {
     setCart((prev) => [...prev, product]);
   };
 
-  // 🔴 REMOVE FROM CART (FIXED)
+  
   const removeFromCart = (index) => {
     setCart((prev) => prev.filter((_, i) => i !== index));
   };
 
-  // 💰 TOTAL
+
   const total = cart.reduce((sum, item) => sum + item.price, 0);
 
   return (
     <div className="min-h-screen bg-[#b46247] p-8">
 
-      {/* HEADER */}
+      
       <div className="flex justify-between items-center mb-8">
-        <h1 className="text-3xl font-bold text-white justify-center">Skincare Products</h1>
+        <h1 className="text-3xl font-bold text-white">Skincare Products</h1>
 
         <div className="bg-[#976f4c] text-white px-6 py-2 rounded-full">
           🛒 Cart: {cart.length}
         </div>
       </div>
 
-      {/* PRODUCTS GRID */}
+      
       <div className="grid grid-cols-5 gap-6 mb-16">
         {products.map((product) => (
           <div
@@ -68,7 +66,7 @@ export default function ProductsPage() {
             className="rounded-2xl overflow-hidden shadow-lg bg-white"
           >
 
-            {/* IMAGE SECTION */}
+            
             <div className="relative w-full h-72">
               <Image
                 src={product.image}
@@ -77,7 +75,6 @@ export default function ProductsPage() {
                 className="object-cover"
               />
 
-              {/* TEXT ON IMAGE */}
               <div className="absolute bottom-4 left-4 text-white">
                 <h2 className="text-lg font-bold">
                   {product.name}
@@ -88,7 +85,6 @@ export default function ProductsPage() {
               </div>
             </div>
 
-            {/* BUTTON */}
             <div className="p-4">
               <button
                 onClick={() => addToCart(product)}
@@ -101,7 +97,7 @@ export default function ProductsPage() {
         ))}
       </div>
 
-      {/* CART SECTION */}
+     
       <div>
         <h2 className="text-2xl font-bold mb-6">
           Cart Items ({cart.length})
@@ -116,7 +112,7 @@ export default function ProductsPage() {
             key={index}
             className="flex items-center justify-between bg-white p-4 mb-4 rounded-lg shadow"
           >
-            {/* IMAGE + DETAILS */}
+          
             <div className="flex items-center gap-4">
               <div className="relative w-20 h-20">
                 <Image
@@ -133,7 +129,7 @@ export default function ProductsPage() {
               </div>
             </div>
 
-            {/* REMOVE BUTTON */}
+           
             <button
               onClick={() => removeFromCart(index)}
               className="bg-red-500 text-white px-4 py-1 rounded hover:bg-red-600 transition"
@@ -143,7 +139,7 @@ export default function ProductsPage() {
           </div>
         ))}
 
-        {/* TOTAL */}
+      
         {cart.length > 0 && (
           <div className="mt-6 text-xl font-bold">
             Total: ₹{total}
