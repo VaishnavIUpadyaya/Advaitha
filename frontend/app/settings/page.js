@@ -81,7 +81,7 @@ export default function Settings() {
           <div className="mt-8 flex justify-center">
             <button
               onClick={saveChanges}
-              className="bg-[#a4896a] hover:bg-[#796855] font-[marcellus] text-white px-6 py-2 rounded-xl"
+              className="bg-[#a45440] hover:bg-[#9b381a] font-[marcellus] text-white px-6 py-2 rounded-xl"
             >
               Save Changes
             </button>

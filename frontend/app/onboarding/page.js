@@ -34,7 +34,15 @@ export default function Onboarding() {
   };
 
   return (
-    <div className="bg-[#976f4c] min-h-screen flex items-center justify-center">
+    <div className="relative min-h-screen bg-[#b46247] text-[#f7efe7] selection:bg-[#b46247]/30">
+      <div
+        className="absolute inset-0 opacity-10 pointer-events-none"
+        style={{
+          backgroundImage: "url('/leaves.jpg')",
+          backgroundRepeat: "repeat",
+          backgroundSize: "280px",
+        }}
+      />{" "}
       <div className="p-10 max-w-4xl mx-auto bg-[#eceadd] rounded-xl shadow-xl scale-[0.86] origin-center">
         <div className="flex flex-col md:flex-row gap-10 items-stretch">
           <div className="hidden md:block w-1/2">
@@ -141,7 +149,7 @@ export default function Onboarding() {
 
                 <button
                   onClick={handleSubmit}
-                  className="bg-[#a4896a] font-bold px-20 py-3 mt-6 rounded-xl hover:bg-[#796855] text-white transition"
+                  className="bg-[#83422d] font-bold px-20 py-3 mt-6 rounded-xl hover:bg-[#7a3f28] text-white transition"
                 >
                   Save & Continue
                 </button>
