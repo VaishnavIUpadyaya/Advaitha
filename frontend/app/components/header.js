@@ -1,9 +1,11 @@
 "use client";
 import { useState, useEffect } from "react";
+import { useMenuStore } from "./useMenuStore"; 
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
+
+  const { menuOpen, toggleMenu, closeMenu } = useMenuStore();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -47,7 +49,7 @@ export function Header() {
           </button>
 
           <button
-            onClick={() => setMenuOpen(!menuOpen)}
+            onClick={toggleMenu}
             className="md:hidden flex flex-col justify-center items-center w-10 h-10 border border-white/10 rounded-full"
           >
             <span className={`w-5 h-[2px] bg-white transition-all ${menuOpen ? "rotate-45 translate-y-[6px]" : ""}`} />
@@ -60,13 +62,13 @@ export function Header() {
       {menuOpen && (
         <div className="md:hidden mt-4 px-4 pb-6">
           <div className="flex flex-col space-y-6 text-sm uppercase tracking-[0.2em] text-white/90">
-            <a href="/about_us" onClick={() => setMenuOpen(false)} className="hover:opacity-70">About us</a>
-            <a href="/settings" onClick={() => setMenuOpen(false)} className="hover:opacity-70">Settings</a>
-            <a href="/profile" onClick={() => setMenuOpen(false)} className="hover:opacity-70">Profile</a>
-            <a href="/products" onClick={() => setMenuOpen(false)} className="hover:opacity-70">Products</a>
+            <a href="/about_us" onClick={closeMenu} className="hover:opacity-70">About us</a>
+            <a href="/settings" onClick={closeMenu} className="hover:opacity-70">Settings</a>
+            <a href="/profile" onClick={closeMenu} className="hover:opacity-70">Profile</a>
+            <a href="/products" onClick={closeMenu} className="hover:opacity-70">Products</a>
 
             <button
-              onClick={() => (window.location.href = "/assistant")}
+              onClick={() => { closeMenu(); window.location.href = "/assistant"; }}
               className="mt-4 px-6 py-3 rounded-full border border-[#d4846d] text-white/90 text-[10px] font-bold uppercase tracking-widest hover:bg-[#d4846d] hover:text-[#0f1115] transition-all duration-300"
             >
               Support
