@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
 export default function ProductsPage() {
   const [products, setProducts] = useState([]);
 
@@ -18,10 +17,8 @@ export default function ProductsPage() {
       setProducts([]);
     }
   };
-
   fetchProducts();
 }, []);
-
 
   return (
     <div className="p-8">
