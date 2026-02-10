@@ -14,9 +14,6 @@ export async function GET() {
     return NextResponse.json(products);
   } catch (err) {
     console.error("Products API error:", err);
-    return NextResponse.json(
-      { error: err.message },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: err.message }, { status: 500 });
   }
 }
