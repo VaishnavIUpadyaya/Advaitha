@@ -28,7 +28,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} ${marcellus.variable} antialiased bg-[#0f1115] text-white/90`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} ${marcellus.variable} antialiased bg-[#0f1115] `}>
         <Header />
         <div className="min-h-screen pt-14"> 
           {children}

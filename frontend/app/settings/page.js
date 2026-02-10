@@ -28,7 +28,7 @@ export default function Settings() {
   };
 
   return (
-    <div className="relative min-h-screen bg-[#b46247]">
+    <div className="relative min-h-screen bg-[#b46247] text-black">
       <div
         className="absolute inset-0 opacity-10"
         style={{
