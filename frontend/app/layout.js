@@ -1,6 +1,8 @@
 import { Geist, Geist_Mono, Marcellus } from "next/font/google";
 import "./globals.css";
 import ChatWidget from "./components/ChatWidget";
+import {Header} from "./components/header";
+import {Footer} from "./components/footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,11 +28,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} ${marcellus.variable} antialiased`}
-      >
-        {children}
+      <body className={`${geistSans.variable} ${geistMono.variable} ${marcellus.variable} antialiased bg-[#0f1115] text-white/90`}>
+        <Header />
+        <div className="min-h-screen pt-14"> 
+          {children}
+        </div>
         <ChatWidget />
+        <Footer />
       </body>
     </html>
   );
