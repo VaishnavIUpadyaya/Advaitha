@@ -1,12 +1,12 @@
 # Advaitha — AI-Powered Skincare MVP
 
-Live demo: REPLACE_WITH_LIVE_DEMO_URL
+Live demo:https://advaitha.vercel.app/
 
-Simple, production-like MVP built with Next.js, Firebase, and Google Gemini for AI features.
+Simple, production-like MVP built with Next.js, Firebase, and Google Gemini & Groq for AI features.
 
 **Project goal:** Personalised skin analysis and routine suggestions based on user onboarding data.
 
-**Stack:** Next.js (App Router), React, Tailwind CSS, Firebase (Auth, Firestore), Gemini (Generative AI), groq-sdk, jsPDF.
+**TechStack:** Next.js (App Router), React, Tailwind CSS, Firebase (Auth, Firestore), Gemini (Generative AI), groq-sdk, jsPDF.
 
 **What this README covers**
 
